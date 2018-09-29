@@ -1,0 +1,12 @@
+import cv2
+import numpy as np
+
+image = cv2.imread("eye1.jpg")
+hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+lower_black = np.array([0,0,0])
+upper_black = np.array([227,230,49])
+mask = cv2.inRange(hsv, lower_black, upper_black)
+cv2.imshow("Original", image)
+cv2.imshow("Pupil", mask)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
